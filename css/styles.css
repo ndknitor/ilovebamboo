@@ -2,6 +2,13 @@
     --heart: "M150 43.4375C125.138 -24.05 0 -14.025 0 88.0375C0 138.887 38.25 206.55 150 275.5C261.75 206.55 300 138.887 300 88.0375C300 -13.4375 175 -24.45 150 43.4375V43.4375Z";
 }
 
+@font-face {
+    font-family: 'pacifico';
+    /*a name to be used later*/
+    src: url('/fonts/Pacifico-Regular.ttf');
+    /*URL to font*/
+}
+
 body {
     position: relative;
     background: #000000;
@@ -12,6 +19,18 @@ canvas#canvas {
     position: absolute;
     height: 98vh;
     width: 100%;
+}
+
+.title {
+    color: rgba(242, 0, 68, 1);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    text-align: center;
+    font-family: pacifico;
+    font-size: 40px;
+    font-weight: 100;
 }
 
 .copyright {
@@ -92,12 +111,6 @@ img {
 }
 
 @media screen and (max-width: 800px) and (min-width: 600px) {
-    .container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
     @keyframes heart {
         0% {
             transform: scale(1.8);
@@ -118,12 +131,6 @@ img {
 }
 
 @media screen and (max-width: 600px) and (min-width: 380px) {
-    .container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
     @keyframes heart {
         0% {
             transform: scale(1.3);
@@ -143,13 +150,7 @@ img {
     }
 }
 
-@media screen and (max-width: 379px)  {
-    .container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
+@media screen and (max-width: 379px) {
     @keyframes heart {
         0% {
             transform: scale(1);
