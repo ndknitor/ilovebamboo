@@ -85,6 +85,7 @@ a:active {
 
 img {
     height: 300px;
+    /* filter : grayscale(100%); */
 }
 
 .swiper {
