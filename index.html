@@ -8,6 +8,7 @@
     <title>I love Ruby</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="/manifest.json">
 </head>
 
 <body>
@@ -47,6 +48,19 @@
         <a>© 2023 Ngo Dinh Khoi Nguyen, All
             Right For Love</a>
     </div>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered');
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
