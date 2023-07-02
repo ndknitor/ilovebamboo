@@ -34,15 +34,39 @@ self.addEventListener('activate', event => {
     );
 });
 
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', (event) => {
     event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                // Try to fetch the request from the network if it's not in the cache
-                return response || fetch(event.request);
-            })
-            .catch(error => {
-                console.error('Error in fetch handler:', error);
-            })
+        caches.match(event.request).then((cachedResponse) => {
+            if (cachedResponse) {
+                // Return the cached response if available
+                return cachedResponse;
+            }
+
+            // Fetch the request from the network
+            return fetch(event.request).then((networkResponse) => {
+                // Clone the network response
+                const clonedResponse = networkResponse.clone();
+
+                // Cache the response for future use
+                caches.open(CACHE_NAME).then((cache) => {
+                    cache.put(event.request, clonedResponse);
+                });
+
+                // Return the network response
+                return networkResponse;
+            });
+        })
     );
 });
+// self.addEventListener('fetch', event => {
+//     event.respondWith(
+//         caches.match(event.request)
+//             .then(response => {
+//                 // Try to fetch the request from the network if it's not in the cache
+//                 return response || fetch(event.request);
+//             })
+//             .catch(error => {
+//                 console.error('Error in fetch handler:', error);
+//             })
+//     );
+// });
