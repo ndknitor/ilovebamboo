@@ -4,7 +4,9 @@ const urlsToCache = [
     '/css/*',
     '/fonts/*',
     '/images/*',
-    '/js/*'
+    '/js/*',
+    'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css',
+    'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js'
 ];
 
 self.addEventListener('install', event => {
